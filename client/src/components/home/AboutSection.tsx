@@ -4,25 +4,53 @@ const AboutSection = () => {
   return (
     <section className="py-12 md:py-16 bg-white">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 items-center">
-          <div>
-            <h2 className="font-['Playfair_Display'] text-2xl md:text-3xl font-bold mb-4">The Harvansh Story</h2>
-            <p className="mb-4">Founded by Harvansh, our store began with a passion for beautifully crafted home décor that tells a story. What started as a small collection of handpicked items has grown into a curated selection of unique pieces from around the world.</p>
-            <p className="mb-6">Each product in our collection is thoughtfully selected to bring warmth, character, and style to your home. We believe that your living space should be a reflection of your personal journey and style.</p>
-            <Link href="/about" className="inline-block border-b-2 border-secondary text-primary font-medium hover:border-primary transition">
-              Learn More About Us
-            </Link>
-          </div>
-          <div className="relative">
-            <img 
-              src="https://images.unsplash.com/photo-1589459072535-550f4fae08d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-              alt="Founder working on designs" 
-              className="w-full h-[400px] object-cover rounded-lg"
-            />
-            <div className="absolute -bottom-6 -left-6 bg-secondary w-16 h-16 flex items-center justify-center rounded-full">
-              <span className="font-['Playfair_Display'] text-white text-2xl">H</span>
+        <div className="text-center mb-10">
+          <h2 className="font-['Playfair_Display'] text-3xl md:text-4xl font-bold mb-4">Where Every Detail Tells a Tale</h2>
+          <p className="max-w-3xl mx-auto text-gray-600">
+            Transform your space with our carefully curated collection of artisanal home décor, each piece designed to add character and warmth to your home.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="bg-neutral p-8 rounded-lg text-center">
+            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
             </div>
+            <h3 className="text-xl font-bold mb-2">Artisanal Craftsmanship</h3>
+            <p className="text-gray-600">Each piece in our collection is handcrafted by skilled artisans with attention to detail and quality.</p>
           </div>
+          
+          <div className="bg-neutral p-8 rounded-lg text-center">
+            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+                <path d="M3 6h18" />
+                <path d="M16 10a4 4 0 0 1-8 0" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold mb-2">Curated Collection</h3>
+            <p className="text-gray-600">We thoughtfully select unique pieces from around the world to help you create a home that reflects your personal style.</p>
+          </div>
+          
+          <div className="bg-neutral p-8 rounded-lg text-center">
+            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z" />
+                <path d="m7.6 12.5 2.8 2.8 5.6-5.6" />
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold mb-2">Sustainable Practices</h3>
+            <p className="text-gray-600">We prioritize eco-friendly materials and ethical production methods to create beautiful décor that's good for the planet.</p>
+          </div>
+        </div>
+        
+        <div className="text-center mt-10">
+          <Link href="/about" className="inline-block bg-primary text-white py-3 px-8 rounded-full hover:bg-opacity-90 transition font-medium">
+            Learn More About Us
+          </Link>
         </div>
       </div>
     </section>
