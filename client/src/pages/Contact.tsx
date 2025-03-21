@@ -161,7 +161,7 @@ const Contact = () => {
                   <div>
                     <h3 className="font-bold mb-2">Phone</h3>
                     <p className="text-gray-600">
-                      +91 98765 43210<br />
+                      +91 9896626916<br />
                       Monday – Friday: 10am – 6pm<br />
                       Saturday: 11am – 4pm
                     </p>
@@ -175,9 +175,9 @@ const Contact = () => {
                   <div>
                     <h3 className="font-bold mb-2">Email</h3>
                     <p className="text-gray-600">
-                      info@harvansh.com<br />
-                      support@harvansh.com<br />
-                      orders@harvansh.com
+                      info@kalabyharvansh.com<br />
+                      support@kalabyharvansh.com<br />
+                      orders@kalabyharvansh.com
                     </p>
                   </div>
                 </div>

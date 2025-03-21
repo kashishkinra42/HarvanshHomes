@@ -7,7 +7,7 @@ const About = () => {
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="font-['Playfair_Display'] text-4xl md:text-5xl font-bold mb-6">Our Story</h1>
-            <p className="text-gray-600 mb-8">Discover the journey of Harvansh and our passion for beautiful home decor.</p>
+            <p className="text-gray-600 mb-8">Discover the journey of कला by Harvansh and our passion for beautiful home decor.</p>
           </div>
         </div>
       </section>
@@ -17,8 +17,8 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <img 
-                src="https://images.unsplash.com/photo-1589459072535-550f4fae08d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                alt="Founder working on designs" 
+                src="/images/harvansh.jpg" 
+                alt="Harvansh - Founder" 
                 className="rounded-lg shadow-lg w-full h-[400px] object-cover"
               />
             </div>
