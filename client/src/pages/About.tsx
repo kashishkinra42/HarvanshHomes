@@ -68,18 +68,7 @@ const About = () => {
           <div className="max-w-3xl mx-auto">
             <h2 className="font-['Playfair_Display'] text-3xl font-bold mb-6 text-center">Our Mission</h2>
             <p className="text-lg text-center mb-8">At कला by Harvansh, our mission is to bring beautifully crafted decor into homes around the world, helping our customers create spaces that reflect their personal style and tell their unique story. We believe that a thoughtfully designed home enhances daily life, bringing joy and comfort to everyday moments.</p>
-            <div className="grid grid-cols-2 gap-6">
-              <img 
-                src="/images/workshop.jpg" 
-                alt="Workshop with artisans" 
-                className="rounded-lg shadow h-64 object-cover"
-              />
-              <img 
-                src="/images/materials.jpg" 
-                alt="Materials used in our products" 
-                className="rounded-lg shadow h-64 object-cover"
-              />
-            </div>
+            {/* Image section removed as images are not available yet */}
           </div>
         </div>
       </section>
