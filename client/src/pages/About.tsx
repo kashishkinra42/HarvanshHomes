@@ -70,12 +70,12 @@ const About = () => {
             <p className="text-lg text-center mb-8">At कला by Harvansh, our mission is to bring beautifully crafted decor into homes around the world, helping our customers create spaces that reflect their personal style and tell their unique story. We believe that a thoughtfully designed home enhances daily life, bringing joy and comfort to everyday moments.</p>
             <div className="grid grid-cols-2 gap-6">
               <img 
-                src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                src="/images/workshop.jpg" 
                 alt="Workshop with artisans" 
                 className="rounded-lg shadow h-64 object-cover"
               />
               <img 
-                src="https://images.unsplash.com/photo-1616137783083-8336738d0c5a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                src="/images/materials.jpg" 
                 alt="Materials used in our products" 
                 className="rounded-lg shadow h-64 object-cover"
               />

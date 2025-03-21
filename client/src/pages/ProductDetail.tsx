@@ -179,9 +179,11 @@ const ProductDetail = () => {
               
               <div className="mb-6">
                 <p className="font-['Montserrat'] text-2xl font-bold text-primary mb-2">
-                  ₹{(product.discountPrice || product.price).toFixed(2)}
+                  {product.category === "Wall Décor" ? "From " : ""}
+                  ₹{Math.floor(product.discountPrice || product.price)}
+                  {product.category === "Decorative Objects" ? "+" : ""}
                   {product.discountPrice && (
-                    <span className="ml-2 text-gray-500 line-through text-lg">₹{product.price.toFixed(2)}</span>
+                    <span className="ml-2 text-gray-500 line-through text-lg">₹{Math.floor(product.price)}</span>
                   )}
                 </p>
                 <p className={product.inStock ? "text-success font-medium" : "text-destructive font-medium"}>
