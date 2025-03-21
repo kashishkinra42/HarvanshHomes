@@ -1,0 +1,87 @@
+Tagline Options:
+"Crafting Homes, Curating Stories."
+"Where Every Detail Tells a Tale."
+"Elevate Your Space, Express Your Style."
+"Artistry for your living space."
+Chosen Tagline: "Crafting Homes, Curating Stories."
+2. Website Features:
+
+Product Catalog:
+Categorized browsing (e.g., Wall Decor, Lighting, Textiles, Furniture Accents, Pooja Items).
+Detailed product descriptions with materials, dimensions, and care instructions.
+High-quality images with zoom functionality.
+Multiple views of each item.
+Ability to filter and sort products (price, material, style).
+Shopping Cart & Checkout:
+Secure payment gateway (e.g., Razorpay, PayU, Paytm).
+Multiple payment options (UPI, credit/debit cards, net banking, cash on delivery if feasible).
+Order tracking.
+Clear shipping and return policies.
+Shipping cost calculator.
+Customer Accounts:
+Order history.
+Saved addresses.
+Wishlist.
+Ability to save favorite items.
+Reviews & Ratings:
+Star rating system.
+Text-based reviews.
+Ability to add images of the product in the home.
+Crucially, no photos of people in the review section.
+Blog/Inspiration Section:
+Interior design tips.
+Style guides.
+Product spotlights.
+Seasonal decor ideas.
+Contact & Support:
+Contact form.
+Email and phone support.
+FAQ section.
+Currency:
+All prices displayed in Indian Rupees (INR).
+Search Functionality:
+Robust search bar to find products quickly.
+Mobile Responsiveness:
+Ensure the website works seamlessly on all devices.
+Social Media Integration:
+Links to your social media profiles.
+Social sharing buttons for products.
+Secure SSL Certificate:
+Ensure website security.
+3. Product Pricing & Display:
+
+Clearly display the price in INR for each product.
+Consider offering discounts or promotions.
+Include shipping costs separately.
+Use the following format: ₹ [Price] (e.g., ₹ 1200).
+4. Perfect Statement/About Us:
+
+"Welcome to Harvansh Kalaa, where we believe your home is a canvas for your unique story. We curate a collection of exquisite home decor items, each piece chosen for its craftsmanship and ability to transform your living space. Our passion lies in bringing you designs that blend tradition with contemporary style, allowing you to create a home that reflects your personality. From handcrafted accents to statement pieces, Harvansh Kalaa is dedicated to helping you craft a home that inspires and delights. We are committed to providing quality products and excellent customer service, ensuring your journey with us is as beautiful as the spaces we help you create."
+
+5. Website Structure (Example):
+
+Homepage:
+Featured products.
+New arrivals.
+Promotional banners.
+Brief introduction to Harvansh Kalaa.
+Shop:
+Wall Decor
+Lighting
+Textiles
+Furniture Accents
+Pooja Items
+Blog
+About Us
+Contact Us
+My Account
+Cart
+6. Review Section instructions to customers.
+
+"Please leave your honest review of this product. We appreciate your feedback. Feel free to upload pictures of the product in your home, but please do not upload pictures of people."
+Key Considerations:
+
+High-Quality Photography: Invest in professional product photography.
+User-Friendly Design: Make the website easy to navigate.
+Customer Service: Provide prompt and helpful customer support.
+Marketing: Utilize social media, email marketing, and potentially local advertising to reach your target audience.
