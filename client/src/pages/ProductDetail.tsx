@@ -179,9 +179,9 @@ const ProductDetail = () => {
               
               <div className="mb-6">
                 <p className="font-['Montserrat'] text-2xl font-bold text-primary mb-2">
-                  ${(product.discountPrice || product.price).toFixed(2)}
+                  ₹{(product.discountPrice || product.price).toFixed(2)}
                   {product.discountPrice && (
-                    <span className="ml-2 text-gray-500 line-through text-lg">${product.price.toFixed(2)}</span>
+                    <span className="ml-2 text-gray-500 line-through text-lg">₹{product.price.toFixed(2)}</span>
                   )}
                 </p>
                 <p className={product.inStock ? "text-success font-medium" : "text-destructive font-medium"}>
@@ -256,7 +256,7 @@ const ProductDetail = () => {
                 <div className="flex items-center space-x-6 text-sm">
                   <div className="flex items-center">
                     <i className="fas fa-truck text-primary mr-2"></i>
-                    <span>Free shipping over $75</span>
+                    <span>Free shipping over ₹5000</span>
                   </div>
                   <div className="flex items-center">
                     <i className="fas fa-undo text-primary mr-2"></i>

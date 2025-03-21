@@ -117,7 +117,7 @@ const Footer = () => {
         </div>
         
         <div className="pt-6 border-t border-gray-700 text-center text-gray-400 text-sm">
-          <p>&copy; {new Date().getFullYear()} Harvansh Home Decor. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} कला by Harvansh. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -147,9 +147,9 @@ const Contact = () => {
                   <div>
                     <h3 className="font-bold mb-2">Our Store</h3>
                     <p className="text-gray-600">
-                      123 Decor Avenue<br />
-                      Creative District<br />
-                      New York, NY 10001
+                      58 Model Town<br />
+                      Rohtak<br />
+                      Haryana, India 124001
                     </p>
                   </div>
                 </div>
@@ -161,9 +161,9 @@ const Contact = () => {
                   <div>
                     <h3 className="font-bold mb-2">Phone</h3>
                     <p className="text-gray-600">
-                      +1 (555) 123-4567<br />
-                      Monday – Friday: 9am – 5pm<br />
-                      Saturday: 10am – 4pm
+                      +91 98765 43210<br />
+                      Monday – Friday: 10am – 6pm<br />
+                      Saturday: 11am – 4pm
                     </p>
                   </div>
                 </div>
@@ -211,7 +211,7 @@ const Contact = () => {
         <div className="container mx-auto px-4 md:px-6">
           <div className="rounded-lg overflow-hidden shadow-lg">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343176!2d-73.99740832404045!3d40.74076983539368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a3f81d549f%3A0xb2a39bb5cacc7da0!2s123%20W%2024th%20St%2C%20New%20York%2C%20NY%2010011%2C%20USA!5e0!3m2!1sen!2s!4v1641155356228!5m2!1sen!2s" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13989.217785336697!2d76.59242358073702!3d28.882659122779485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d85a7b49da9d9%3A0xf424ea39224a6fcc!2sModel%20Town%2C%20Rohtak%2C%20Haryana%20124001!5e0!3m2!1sen!2sin!4v1711629693374!5m2!1sen!2sin" 
               width="100%" 
               height="450" 
               style={{ border: 0 }} 

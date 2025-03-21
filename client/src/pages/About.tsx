@@ -23,7 +23,7 @@ const About = () => {
               />
             </div>
             <div>
-              <h2 className="font-['Playfair_Display'] text-3xl font-bold mb-4">Meet Harvansh</h2>
+              <h2 className="font-['Playfair_Display'] text-3xl font-bold mb-4">Meet कला by Harvansh</h2>
               <p className="mb-4">Founded by Harvansh, our store began with a passion for beautifully crafted home décor that tells a story. With an eye for design and appreciation for artisanal craftsmanship, Harvansh started collecting unique pieces during his travels around the world.</p>
               <p className="mb-4">What started as a small collection of handpicked items in 2015 has grown into a curated selection of unique pieces from skilled artisans and designers globally. Each item in our collection has been personally selected to ensure quality, beauty, and uniqueness.</p>
               <p className="mb-4">Through Harvansh's vision, we've built a brand that celebrates the marriage of traditional craftsmanship with contemporary design, creating pieces that add character and warmth to any living space.</p>
@@ -67,7 +67,7 @@ const About = () => {
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto">
             <h2 className="font-['Playfair_Display'] text-3xl font-bold mb-6 text-center">Our Mission</h2>
-            <p className="text-lg text-center mb-8">At Harvansh, our mission is to bring beautifully crafted decor into homes around the world, helping our customers create spaces that reflect their personal style and tell their unique story. We believe that a thoughtfully designed home enhances daily life, bringing joy and comfort to everyday moments.</p>
+            <p className="text-lg text-center mb-8">At कला by Harvansh, our mission is to bring beautifully crafted decor into homes around the world, helping our customers create spaces that reflect their personal style and tell their unique story. We believe that a thoughtfully designed home enhances daily life, bringing joy and comfort to everyday moments.</p>
             <div className="grid grid-cols-2 gap-6">
               <img 
                 src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 

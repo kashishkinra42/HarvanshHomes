@@ -66,14 +66,8 @@ const TestimonialsSection = () => {
                   </div>
                   <p className="mb-4">"{testimonial.review}"</p>
                   <div className="flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-gray-200 mr-3 overflow-hidden">
-                      {testimonial.imageUrl && (
-                        <img 
-                          src={testimonial.imageUrl} 
-                          alt={testimonial.name} 
-                          className="w-full h-full object-cover"
-                        />
-                      )}
+                    <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white mr-3">
+                      <span className="font-medium">{testimonial.name[0]}</span>
                     </div>
                     <div>
                       <h4 className="font-medium">{testimonial.name}</h4>
