@@ -1,171 +1,189 @@
-import type { Express, Request, Response } from "express";
+import express, { type Express, Request, Response } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
+import crypto from "crypto";
 import { z } from "zod";
-import { insertCartItemSchema } from "@shared/schema";
+import { cartItemWithProductSchema, insertCartItemSchema } from "@shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Set up API routes
-  const apiRouter = app.route('/api');
-  
-  // Categories
-  app.get('/api/categories', async (req: Request, res: Response) => {
-    try {
-      const categories = await storage.getAllCategories();
-      res.json(categories);
-    } catch (error) {
-      console.error('Error fetching categories:', error);
-      res.status(500).json({ message: 'Failed to fetch categories' });
+  // API routes prefix
+  const apiRouter = express.Router();
+  app.use("/api", apiRouter);
+
+  // Helper to generate a session ID if not present
+  const getOrCreateSessionId = (req: Request): string => {
+    if (!req.headers.sessionid) {
+      const sessionId = crypto.randomUUID();
+      return sessionId;
     }
-  });
-  
-  app.get('/api/categories/:slug', async (req: Request, res: Response) => {
+    return req.headers.sessionid as string;
+  };
+
+  // Products endpoints
+  apiRouter.get("/products", async (req: Request, res: Response) => {
     try {
-      const { slug } = req.params;
-      const category = await storage.getCategoryBySlug(slug);
-      
-      if (!category) {
-        return res.status(404).json({ message: 'Category not found' });
-      }
-      
-      res.json(category);
-    } catch (error) {
-      console.error('Error fetching category:', error);
-      res.status(500).json({ message: 'Failed to fetch category' });
-    }
-  });
-  
-  // Products
-  app.get('/api/products', async (req: Request, res: Response) => {
-    try {
-      // Handle query parameters
-      const { category, featured, search } = req.query;
-      
-      if (category) {
-        // Get category by slug
-        const categoryObj = await storage.getCategoryBySlug(category as string);
-        if (!categoryObj) {
-          return res.status(404).json({ message: 'Category not found' });
-        }
-        
-        const products = await storage.getProductsByCategory(categoryObj.id);
-        return res.json(products);
-      }
-      
-      if (featured === 'true') {
-        const limit = req.query.limit ? parseInt(req.query.limit as string) : undefined;
-        const products = await storage.getFeaturedProducts(limit);
-        return res.json(products);
-      }
-      
-      if (search) {
-        const products = await storage.searchProducts(search as string);
-        return res.json(products);
-      }
-      
       const products = await storage.getAllProducts();
       res.json(products);
     } catch (error) {
-      console.error('Error fetching products:', error);
-      res.status(500).json({ message: 'Failed to fetch products' });
+      res.status(500).json({ message: "Failed to fetch products" });
     }
   });
-  
-  app.get('/api/products/:slug', async (req: Request, res: Response) => {
+
+  apiRouter.get("/products/featured", async (req: Request, res: Response) => {
     try {
-      const { slug } = req.params;
-      const product = await storage.getProductBySlug(slug);
+      const products = await storage.getFeaturedProducts();
+      res.json(products);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch featured products" });
+    }
+  });
+
+  apiRouter.get("/products/search", async (req: Request, res: Response) => {
+    try {
+      const query = req.query.q as string || "";
+      const products = await storage.searchProducts(query);
+      res.json(products);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to search products" });
+    }
+  });
+
+  apiRouter.get("/products/:id", async (req: Request, res: Response) => {
+    try {
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: "Invalid product ID" });
+      }
       
+      const product = await storage.getProductById(id);
       if (!product) {
-        return res.status(404).json({ message: 'Product not found' });
+        return res.status(404).json({ message: "Product not found" });
       }
       
       res.json(product);
     } catch (error) {
-      console.error('Error fetching product:', error);
-      res.status(500).json({ message: 'Failed to fetch product' });
+      res.status(500).json({ message: "Failed to fetch product" });
     }
   });
-  
-  // Cart
-  app.get('/api/cart/:cartId', async (req: Request, res: Response) => {
+
+  // Categories endpoints
+  apiRouter.get("/categories", async (req: Request, res: Response) => {
     try {
-      const { cartId } = req.params;
-      const cartItems = await storage.getCartItemWithProduct(cartId);
+      const categories = await storage.getAllCategories();
+      res.json(categories);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch categories" });
+    }
+  });
+
+  apiRouter.get("/categories/:name/products", async (req: Request, res: Response) => {
+    try {
+      const name = req.params.name;
+      const products = await storage.getProductsByCategory(name);
+      res.json(products);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch products by category" });
+    }
+  });
+
+  // Cart endpoints
+  apiRouter.get("/cart", async (req: Request, res: Response) => {
+    try {
+      const sessionId = getOrCreateSessionId(req);
+      const cartItems = await storage.getCartItems(sessionId);
+      
+      // Add sessionId to the response headers
+      res.setHeader("sessionid", sessionId);
       res.json(cartItems);
     } catch (error) {
-      console.error('Error fetching cart items:', error);
-      res.status(500).json({ message: 'Failed to fetch cart items' });
+      res.status(500).json({ message: "Failed to fetch cart items" });
     }
   });
-  
-  app.post('/api/cart', async (req: Request, res: Response) => {
+
+  apiRouter.post("/cart", async (req: Request, res: Response) => {
     try {
-      const validatedData = insertCartItemSchema.parse(req.body);
+      const sessionId = getOrCreateSessionId(req);
+      
+      // Validate input
+      const validatedData = insertCartItemSchema.parse({
+        ...req.body,
+        sessionId
+      });
+      
       const cartItem = await storage.addToCart(validatedData);
+      
+      // Add sessionId to the response headers
+      res.setHeader("sessionid", sessionId);
       res.status(201).json(cartItem);
     } catch (error) {
       if (error instanceof z.ZodError) {
-        return res.status(400).json({ message: 'Invalid cart item data', errors: error.format() });
+        return res.status(400).json({ message: "Invalid cart item data", errors: error.errors });
       }
-      console.error('Error adding item to cart:', error);
-      res.status(500).json({ message: 'Failed to add item to cart' });
+      res.status(500).json({ message: "Failed to add item to cart" });
     }
   });
-  
-  app.put('/api/cart/:id', async (req: Request, res: Response) => {
+
+  apiRouter.put("/cart/:id", async (req: Request, res: Response) => {
     try {
-      const { id } = req.params;
-      const { quantity } = req.body;
-      
-      if (typeof quantity !== 'number' || quantity < 0) {
-        return res.status(400).json({ message: 'Invalid quantity' });
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: "Invalid cart item ID" });
       }
       
-      const updatedItem = await storage.updateCartItem(parseInt(id), quantity);
+      const { quantity } = req.body;
+      if (typeof quantity !== "number" || quantity < 1) {
+        return res.status(400).json({ message: "Invalid quantity" });
+      }
       
+      const updatedItem = await storage.updateCartItem(id, quantity);
       if (!updatedItem) {
-        if (quantity === 0) {
-          return res.json({ message: 'Item removed from cart' });
-        }
-        return res.status(404).json({ message: 'Cart item not found' });
+        return res.status(404).json({ message: "Cart item not found" });
       }
       
       res.json(updatedItem);
     } catch (error) {
-      console.error('Error updating cart item:', error);
-      res.status(500).json({ message: 'Failed to update cart item' });
+      res.status(500).json({ message: "Failed to update cart item" });
     }
   });
-  
-  app.delete('/api/cart/:id', async (req: Request, res: Response) => {
+
+  apiRouter.delete("/cart/:id", async (req: Request, res: Response) => {
     try {
-      const { id } = req.params;
-      const removed = await storage.removeFromCart(parseInt(id));
-      
-      if (!removed) {
-        return res.status(404).json({ message: 'Cart item not found' });
+      const id = parseInt(req.params.id);
+      if (isNaN(id)) {
+        return res.status(400).json({ message: "Invalid cart item ID" });
       }
       
-      res.json({ message: 'Item removed from cart' });
+      const success = await storage.removeFromCart(id);
+      if (!success) {
+        return res.status(404).json({ message: "Cart item not found" });
+      }
+      
+      res.json({ success: true });
     } catch (error) {
-      console.error('Error removing cart item:', error);
-      res.status(500).json({ message: 'Failed to remove cart item' });
+      res.status(500).json({ message: "Failed to remove cart item" });
     }
   });
-  
-  // Testimonials
-  app.get('/api/testimonials', async (req: Request, res: Response) => {
+
+  apiRouter.delete("/cart", async (req: Request, res: Response) => {
+    try {
+      const sessionId = getOrCreateSessionId(req);
+      await storage.clearCart(sessionId);
+      res.json({ success: true });
+    } catch (error) {
+      res.status(500).json({ message: "Failed to clear cart" });
+    }
+  });
+
+  // Testimonials endpoint
+  apiRouter.get("/testimonials", async (req: Request, res: Response) => {
     try {
       const testimonials = await storage.getAllTestimonials();
       res.json(testimonials);
     } catch (error) {
-      console.error('Error fetching testimonials:', error);
-      res.status(500).json({ message: 'Failed to fetch testimonials' });
+      res.status(500).json({ message: "Failed to fetch testimonials" });
     }
   });
 
   const httpServer = createServer(app);
-  
   return httpServer;
 }
