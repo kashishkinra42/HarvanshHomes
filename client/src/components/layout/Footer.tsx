@@ -6,8 +6,9 @@ const Footer = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
-            <h3 className="font-['Playfair_Display'] text-xl font-bold mb-4">Harvansh</h3>
+            <h3 className="font-['Playfair_Display'] text-xl font-bold mb-4">कला by Harvansh</h3>
             <p className="mb-4 text-gray-300">Transform your space with our curated collection of unique home décor pieces.</p>
+            <p className="text-xs text-gray-400 mb-4">Crafting Homes, Curating Stories</p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-secondary transition">
                 <i className="fab fa-facebook-f"></i>
